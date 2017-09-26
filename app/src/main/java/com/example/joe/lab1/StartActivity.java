@@ -2,6 +2,7 @@ package com.example.joe.lab1;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
 
 public class StartActivity extends Activity {
 

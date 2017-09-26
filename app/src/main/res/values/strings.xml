@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Lab Exercise 1</string>
+    <string name="app_name">Lab Exercise 2</string>
     <string name="hello_message">Hello World!</string>
-    <string name="button_text">I\'m a button!</string>
+    <string name="button_text">I\'m the button!</string>
 
 
     <string name="login_label">login</string>
@@ -10,5 +10,6 @@
     <string name="password_hint">password</string>
     <string name="radioButton_text">RadioButton</string>
     <string name="checkBox_text">CheckBox</string>
+    <!--<string name="switch_text">What does this do?</string>-->
     <string name="switch_text">What does this do?</string>
 </resources>
