@@ -12,4 +12,5 @@
     <string name="checkBox_text">CheckBox</string>
     <!--<string name="switch_text">What does this do?</string>-->
     <string name="switch_text">What does this do?</string>
+    <string name="login_button">Login</string>
 </resources>
