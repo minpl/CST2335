@@ -1,21 +1,33 @@
 package com.example.joe.lab1;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class StartActivity extends Activity {
 
-    protected static final String ACTIVITY_NAME = "StartActivity";
+    private static final String ACTIVITY_NAME = "StartActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         Log.i(ACTIVITY_NAME, "In onCreate()");
+
+
+        Button b1 = (Button) findViewById(R.id.launchButton);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, ListItemsActivity.class);
+                startActivityForResult(intent, 10);
+                onActivityResult(10, 10, intent);
+            }
+        });
     }
 
     protected void onStart() {
@@ -46,6 +58,17 @@ public class StartActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 10) {
+            if (resultCode == Activity.RESULT_OK) {
+                String result = data.getStringExtra("Response");
+                Toast.makeText(getApplicationContext(), "ListItemsActivity Passed: " + result, Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }

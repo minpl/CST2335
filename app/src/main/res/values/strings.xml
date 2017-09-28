@@ -1,16 +1,21 @@
 <resources>
+
+    <!-- Start Activity -->
     <string name="app_name">Lab Exercise 2</string>
     <string name="hello_message">Hello World!</string>
-    <string name="button_text">I\'m the button!</string>
+    <string name="launch_button">I\'m a button!</string>
 
-
+    <!-- Login Activity -->
     <string name="login_label">login</string>
     <string name="login_hint">login name</string>
+    <string name="login_button">Login</string>
     <string name="password_label">password</string>
     <string name="password_hint">password</string>
+
+    <!-- List Items Activity -->
     <string name="radioButton_text">RadioButton</string>
-    <string name="checkBox_text">CheckBox</string>
-    <!--<string name="switch_text">What does this do?</string>-->
-    <string name="switch_text">What does this do?</string>
-    <string name="login_button">Login</string>
+    <string name="checkBox_text">Finished</string>
+    <string name="switch_text">Test Toast Messaging</string>
+
+    <string name="imageButtonDescription">A test of the emulated camera</string>
 </resources>
