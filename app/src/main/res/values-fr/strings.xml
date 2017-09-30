@@ -20,4 +20,6 @@
     <string name="result_message_title">ListItemsActivity Returne</string>
     <string name="result_message">Voici ma réponse</string>
     <string name="alert_title">essai terminé</string>
+    <string name="chat_button">Démarrer la discussion</string>
+    <string name="sendButtonText">ENVOYER</string>
 </resources>

@@ -4,6 +4,7 @@
     <string name="app_name">Lab Exercise 2</string>
     <string name="hello_message">Hello World!</string>
     <string name="launch_button">I\'m a button!</string>
+    <string name="chat_button">Start Chat</string>
 
     <!-- Login Activity -->
     <string name="login_label">login</string>
@@ -20,9 +21,12 @@
     <string name="switch_text">Test Toast Messaging</string>
     <string name="alert_message">"Are you sure you are finished testing?"</string>
     <string name="alert_title">"Finished Testing"</string>
-    <string name="positive_button">"Yes"</string>
-    <string name="negative_button">"Cancel"</string>
+    <string name="positive_button">Yes</string>
+    <string name="negative_button">Cancel</string>
     <string name="result_message">Here is my response."</string>
+
+    <!-- Chat Window Activity -->
+    <string name="sendButtonText">SEND</string>
 
     <string name="imageButtonDescription">A test of the emulated camera</string>
 </resources>
