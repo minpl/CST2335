@@ -11,11 +11,18 @@
     <string name="login_button">Login</string>
     <string name="password_label">password</string>
     <string name="password_hint">password</string>
+    <string name="result_message_title">"ListItemsActivity Passed: "</string>
+
 
     <!-- List Items Activity -->
     <string name="radioButton_text">RadioButton</string>
     <string name="checkBox_text">Finished</string>
     <string name="switch_text">Test Toast Messaging</string>
+    <string name="alert_message">"Are you sure you are finished testing?"</string>
+    <string name="alert_title">"Finished Testing"</string>
+    <string name="positive_button">"Yes"</string>
+    <string name="negative_button">"Cancel"</string>
+    <string name="result_message">Here is my response."</string>
 
     <string name="imageButtonDescription">A test of the emulated camera</string>
 </resources>

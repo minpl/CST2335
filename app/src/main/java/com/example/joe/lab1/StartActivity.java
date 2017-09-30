@@ -66,7 +66,7 @@ public class StartActivity extends Activity {
         if (requestCode == 10) {
             if (resultCode == Activity.RESULT_OK) {
                 String result = data.getStringExtra("Response");
-                Toast.makeText(getApplicationContext(), "ListItemsActivity Passed: " + result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "ListItemsActivity Passed: " + result, Toast.LENGTH_SHORT).show(); //R.string.result_message_title
             }
         }
     }

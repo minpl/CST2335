@@ -14,4 +14,10 @@
     <string name="switch_text">Test Toast Messageire</string>
     <string name="login_button">S\'identifier</string>
     <string name="imageButtonDescription">Un test de la caméra emulée</string>
+    <string name="positive_button">Oui</string>
+    <string name="negative_button">Non</string>
+    <string name="alert_message">Êtes-vous sûr de terminer vos tests?</string>
+    <string name="result_message_title">ListItemsActivity Returne</string>
+    <string name="result_message">Voici ma réponse</string>
+    <string name="alert_title">essai terminé</string>
 </resources>

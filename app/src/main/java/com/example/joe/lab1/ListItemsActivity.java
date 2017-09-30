@@ -53,19 +53,20 @@ public class ListItemsActivity extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ListItemsActivity.this);
-                builder.setMessage("Are you sure you are finished testing?").setTitle("Finished Testing").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.alert_message).setTitle(R.string.alert_title).setPositiveButton(R.string.positive_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         //clicked ok
                         Intent resultIntent = new Intent();
-                        resultIntent.putExtra("Response", "Here is my response");
+                        resultIntent.putExtra("Response", "Here is my Response"); //R.string.result_message //"Here is my response"
                         setResult(Activity.RESULT_OK, resultIntent);
                         finish();
                     }
-                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                }).setNegativeButton(R.string.negative_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         //clicked cancel
+                        Log.i("dialog response", "user cancelled");
                     }
                 }).show();
             }
