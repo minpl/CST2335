@@ -1,5 +1,6 @@
 package com.example.joe.lab1;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
@@ -30,8 +31,6 @@ public class ChatWindow extends Activity {
     static final String KEY_MESSAGE = "KEY_MESSAGE";
 
     final ArrayList<String> messages = new ArrayList<>();
-    private ChatAdapter messageAdapter;
-    private Cursor c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,8 @@ public class ChatWindow extends Activity {
         cdh = new ChatDatabaseHelper(this);
         db = cdh.getWritableDatabase();
 
-        c = db.query(false, TABLE_NAME, new String[]{KEY_MESSAGE}, null, null, null, null, null, null);
+        Cursor c = db.query(false, TABLE_NAME, new String[]{KEY_MESSAGE}, null, null, null, null, null, null);
+        c.close();
 
         c.moveToFirst();
         while (!c.isAfterLast()) {
@@ -56,6 +56,9 @@ public class ChatWindow extends Activity {
         }
 
         Log.i("ChatWindow", "Cursor’s  column count = " + c.getColumnCount());
+        Log.i("ChatWindow", "Database Column 0 Name = " + c.getColumnName(0));
+        Log.i("ChatWindow", "Database Column 1 Name = " + c.getColumnName(1));
+
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +71,7 @@ public class ChatWindow extends Activity {
             }
         });
 
-        messageAdapter = new ChatAdapter(this);
+        ChatAdapter messageAdapter = new ChatAdapter(this);
         lv.setAdapter(messageAdapter);
     }
 
@@ -79,7 +82,7 @@ public class ChatWindow extends Activity {
     }
 
     class ChatAdapter extends ArrayAdapter<String> {
-        public ChatAdapter(Context ctx) {
+        ChatAdapter(Context ctx) {
             super(ctx, 0);
         }
 
@@ -91,11 +94,13 @@ public class ChatWindow extends Activity {
             return messages.get(position);
         }
 
+        @SuppressLint("InflateParams")
+        @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
             LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
 
-            View result = null;
+            View result;
             if (position % 2 == 0) {
                 result = inflater.inflate(R.layout.chat_row_incoming, null);
             } else {
