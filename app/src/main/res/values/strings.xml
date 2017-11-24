@@ -5,6 +5,7 @@
     <string name="hello_message">Hello World!</string>
     <string name="launch_button">I\'m a button!</string>
     <string name="chat_button">Start Chat</string>
+    <string name="weather_button">Launch Weather Forecast</string>
 
     <!-- Login Activity -->
     <string name="login_label">login</string>
@@ -29,4 +30,13 @@
     <string name="sendButtonText">SEND</string>
 
     <string name="imageButtonDescription">A test of the emulated camera</string>
+    <string name="title_activity_weather_forecast">WeatherForecast</string>
+
+    <!-- Weather Forecast Activity -->
+    <string name="weather_image_description">Shows the current weather.</string>
+    <string name="temp_current">---</string>
+    <string name="temp_min">---</string>
+    <string name="temp_max">---</string>
+
+
 </resources>

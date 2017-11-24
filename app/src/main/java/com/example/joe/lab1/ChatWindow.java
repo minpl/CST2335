@@ -21,16 +21,14 @@ import java.util.ArrayList;
 
 public class ChatWindow extends Activity {
 
+    static final String TABLE_NAME = "MESSAGES";
+    static final String KEY_MESSAGE = "KEY_MESSAGE";
+    final ArrayList<String> messages = new ArrayList<>();
     ListView lv;
     EditText et;
     Button b;
     ChatDatabaseHelper cdh;
     SQLiteDatabase db;
-
-    static final String TABLE_NAME = "MESSAGES";
-    static final String KEY_MESSAGE = "KEY_MESSAGE";
-
-    final ArrayList<String> messages = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +43,6 @@ public class ChatWindow extends Activity {
         db = cdh.getWritableDatabase();
 
         Cursor c = db.query(false, TABLE_NAME, new String[]{KEY_MESSAGE}, null, null, null, null, null, null);
-        c.close();
 
         c.moveToFirst();
         while (!c.isAfterLast()) {
@@ -57,8 +54,8 @@ public class ChatWindow extends Activity {
 
         Log.i("ChatWindow", "Cursor’s  column count = " + c.getColumnCount());
         Log.i("ChatWindow", "Database Column 0 Name = " + c.getColumnName(0));
-        Log.i("ChatWindow", "Database Column 1 Name = " + c.getColumnName(1));
 
+        c.close();
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +91,7 @@ public class ChatWindow extends Activity {
             return messages.get(position);
         }
 
+        @SuppressWarnings("NullableProblems")
         @SuppressLint("InflateParams")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
