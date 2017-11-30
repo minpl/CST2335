@@ -57,7 +57,8 @@ public class WeatherForecast extends Activity {
 
         //instantiate and execute the API URL download
         fq = new ForecastQuery();
-        fq.execute("http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=d99666875e0e51521f0040a3d97d0f6a&mode=xml&units=metric");
+        //fq.execute("http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=d99666875e0e51521f0040a3d97d0f6a&mode=xml&units=metric");  //course API
+        fq.execute("http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=ebd7ebaccf00b1de15296a90a21824f0&mode=xml&units=metric");  //my API
 
     }
 

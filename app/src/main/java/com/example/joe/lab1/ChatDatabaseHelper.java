@@ -11,11 +11,10 @@ public class ChatDatabaseHelper extends SQLiteOpenHelper {
     //issue here - what context?
 
     static final String TABLE_NAME = "MESSAGES";
-    private static final String DATABASE_NAME = "Messages.db";
-
-    private static final int VERSION_NUM = 2;
-    private static final String KEY_ID = "KEY_ID";
     static final String KEY_MESSAGE = "KEY_MESSAGE";
+    private static final String DATABASE_NAME = "Messages.db";
+    private static final int VERSION_NUM = 1;
+    private static final String KEY_ID = "KEY_ID";
 
 
     ChatDatabaseHelper(Context ctx) {
