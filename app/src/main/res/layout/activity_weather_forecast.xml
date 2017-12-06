@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
+    android:layout_centerInParent="true"
+    android:layout_centerVertical="true"
     tools:context="com.example.joe.lab1.WeatherForecast">
 
     <ImageView
@@ -14,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
         android:contentDescription="@string/weather_image_description"
         android:src="@android:color/holo_blue_bright"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +27,7 @@
 
     <TextView
         android:id="@+id/temp_current"
-        android:layout_width="69dp"
+        android:layout_width="200dp"
         android:layout_height="56dp"
         android:layout_marginTop="28dp"
         android:text="@string/temp_current"
@@ -36,12 +38,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weather_image" />
 
+
     <TextView
         android:id="@+id/temp_min"
-        android:layout_width="49dp"
+        android:layout_width="100dp"
         android:layout_height="36dp"
-        android:layout_marginStart="128dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="20dp"
+        android:layout_weight="1"
         android:text="@string/temp_min"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
@@ -50,17 +54,19 @@
 
     <TextView
         android:id="@+id/temp_max"
-        android:layout_width="45dp"
+        android:layout_width="100dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="128dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
+        android:layout_weight="1"
         android:text="@string/temp_max"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/temp_min"
         app:layout_constraintTop_toBottomOf="@+id/temp_current" />
+
 
     <ProgressBar
         android:id="@+id/progressBar"

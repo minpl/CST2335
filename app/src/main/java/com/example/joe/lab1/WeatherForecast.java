@@ -176,9 +176,9 @@ public class WeatherForecast extends Activity {
         protected void onPostExecute(String result) {
 
             //write all instance variables to the GUI
-            temp_current.setText(fq.current + (char) 0x00B0);
-            temp_max.setText(fq.max + (char) 0x00B0);
-            temp_min.setText(fq.min + (char) 0x00B0);
+            temp_current.setText("Current: " + fq.current + (char) 0x00B0);
+            temp_max.setText("Max: " + fq.max + (char) 0x00B0);
+            temp_min.setText("Min: " + fq.min + (char) 0x00B0);
             weather_image.setImageBitmap(image);
 
             //when complete, hide the progressbar
