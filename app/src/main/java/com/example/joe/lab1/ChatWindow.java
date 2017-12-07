@@ -1,9 +1,10 @@
 package com.example.joe.lab1;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,12 +25,15 @@ public class ChatWindow extends Activity {
 
     static final String TABLE_NAME = "MESSAGES";
     static final String KEY_MESSAGE = "KEY_MESSAGE";
-    final ArrayList<String> messages = new ArrayList<>();
+    final public ArrayList<String> messages = new ArrayList<>();
+    public Cursor c;
     ListView lv;
     EditText et;
-    Button b;
+    Button sendButton;
     ChatDatabaseHelper cdh;
     SQLiteDatabase db;
+    boolean isTablet;
+    ChatAdapter messageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +42,12 @@ public class ChatWindow extends Activity {
 
         lv = (ListView) findViewById(R.id.listView1);
         et = (EditText) findViewById(R.id.editText1);
-        b = (Button) findViewById(R.id.sendButton);
+        sendButton = (Button) findViewById(R.id.sendButton);
 
         cdh = new ChatDatabaseHelper(this);
         db = cdh.getWritableDatabase();
 
-        Cursor c = db.query(false, TABLE_NAME, new String[]{KEY_MESSAGE}, null, null, null, null, null, null);
+        c = db.query(false, TABLE_NAME, new String[]{ChatDatabaseHelper.KEY_ID, KEY_MESSAGE}, null, null, null, null, null, null);
 
         c.moveToFirst();
         while (!c.isAfterLast()) {
@@ -55,21 +60,59 @@ public class ChatWindow extends Activity {
         Log.i("ChatWindow", "Cursor’s  column count = " + c.getColumnCount());
         Log.i("ChatWindow", "Database Column 0 Name = " + c.getColumnName(0));
 
-        c.close();
 
-        b.setOnClickListener(new View.OnClickListener() {
+        sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 messages.add(et.getText().toString());
                 ContentValues newMessage = new ContentValues();
                 newMessage.put(ChatDatabaseHelper.KEY_MESSAGE, et.getText().toString());
+
                 db.insert(ChatDatabaseHelper.TABLE_NAME, null, newMessage);
+                messageAdapter.notifyDataSetChanged();
                 et.setText("");
             }
         });
 
-        ChatAdapter messageAdapter = new ChatAdapter(this);
+        isTablet = findViewById(R.id.frameLayout) != null;
+        final MessageFragment mf = new MessageFragment();
+        final Bundle info = new Bundle();
+
+        messageAdapter = new ChatAdapter(this);
         lv.setAdapter(messageAdapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                info.putLong("message_database_id", messageAdapter.getItemID(position));
+                info.putString("message", messages.get(position));
+                info.putInt("message_id", position);
+
+                if (isTablet) {
+                    Log.i("launching details for", "tablet");
+                    mf.setArguments(info);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.add(R.id.frameLayout, mf);
+                    ft.commit();
+                } else {    //phone - working
+                    Log.i("launching details for", "phone");
+                    Intent intent = new Intent(ChatWindow.this, MessageDetails.class);
+                    intent.putExtras(info);
+                    startActivityForResult(intent, 10);
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 10) {
+            if (resultCode == 20) {
+                messages.remove(data.getIntExtra("idToDelete", -1));
+                messageAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override
@@ -87,12 +130,17 @@ public class ChatWindow extends Activity {
             return messages.size();
         }
 
+        public long getItemID(int position) {
+            c.moveToPosition(position);
+            long id = c.getLong(0);
+            return id;
+        }
+
         public String getItem(int position) {
             return messages.get(position);
         }
 
         @SuppressWarnings("NullableProblems")
-        @SuppressLint("InflateParams")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 

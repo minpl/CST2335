@@ -38,5 +38,6 @@
     <string name="temp_min">---</string>
     <string name="temp_max">---</string>
 
+    <string name="deleteMessageButtonText">Delete this message!</string>
 
 </resources>
