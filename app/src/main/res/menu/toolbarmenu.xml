@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="?attr/actionBarPopupTheme">
+
+    <item
+        android:id="@+id/action_one"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:orderInCategory="101"
+        android:title="Show Snackbar"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_two"
+        android:icon="@android:drawable/ic_delete"
+        android:orderInCategory="102"
+        android:title="End Activity?"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_three"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:orderInCategory="103"
+        android:title="Edit Snackbar Text"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_four"
+        android:icon="@android:drawable/presence_online"
+        android:orderInCategory="104"
+        android:title="Version Information"
+        app:showAsAction="never" />
+</menu>

@@ -50,6 +50,17 @@ public class StartActivity extends Activity {
                 Log.i(ACTIVITY_NAME, "User clicked Start Weather Forecast button");
             }
         });
+
+        Button b4 = (Button) findViewById(R.id.launchTestToolbar);
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, TestToolbar.class);
+                startActivityForResult(intent, 10);
+                onActivityResult(10, 10, intent);
+                Log.i(ACTIVITY_NAME, "User clicked Start Toolbar Test button");
+            }
+        });
     }
 
     protected void onStart() {

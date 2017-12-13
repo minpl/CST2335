@@ -6,6 +6,7 @@
     <string name="launch_button">I\'m a button!</string>
     <string name="chat_button">Start Chat</string>
     <string name="weather_button">Launch Weather Forecast</string>
+    <string name="toolbar_button">Launch Toolbar Test</string>
 
     <!-- Login Activity -->
     <string name="login_label">login</string>
@@ -39,5 +40,6 @@
     <string name="temp_max">---</string>
 
     <string name="deleteMessageButtonText">Delete this message!</string>
+    <string name="title_activity_test_toolbar">TestToolbar</string>
 
 </resources>

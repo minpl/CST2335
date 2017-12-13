@@ -1,7 +1,7 @@
 package com.example.joe.lab1;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class MessageDetails extends Activity {
@@ -11,14 +11,23 @@ public class MessageDetails extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.empty_fragment_layout);
 
-        Bundle info = getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
 
-        info.putString("Key", "From phone");
-        //start Transaction to insert fragment in screen:
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        MessageFragment mf = new MessageFragment();
-        mf.setArguments(info);
-        ft.add(R.id.frameLayout, mf);
-        ft.commit();
+            Bundle msgDetails = extras.getBundle("msgDetails");
+            MessageFragment loadedFragment = new MessageFragment();
+            loadedFragment.setArguments(msgDetails);
+            getFragmentManager().beginTransaction()
+                    .add(R.id.frameLayout, loadedFragment)
+                    .commit();
+        }
+    }
+
+    public void deleteMessage(long id, int position) {
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("id", id);
+        resultIntent.putExtra("position", position);
+        setResult(Activity.RESULT_OK, resultIntent);
+        finish();   //finish closes this empty activity on phones.
     }
 }
