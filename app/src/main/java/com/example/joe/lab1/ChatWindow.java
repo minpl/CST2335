@@ -48,6 +48,8 @@ public class ChatWindow extends Activity {
         Log.i("Method: ", "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
+        //Log.i("vewi", get);
+
 
         lv = (ListView) findViewById(R.id.listView1);
 
